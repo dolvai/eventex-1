@@ -1,26 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="talks content padding-bottom-3 desktop-12 container">
+<section>
+    <div class="talks content row padding-bottom-3 desktop-12 container">
         <h2>Manhã</h2>
         {% for talk in morning_talks %}
-            {% include 'core/talk_list_snippet.html' with talk=talk only %}
+        {% include 'core/talk_list_snippet.html' with talk=talk only %}
         {% empty %}
-            <p>Ainda não existem palestras pela manhã.</p>
+        <p>Ainda não existem palestras pela manhã.</p>
         {% endfor %}
+
+        <hr/>
 
         <h2>Tarde</h2>
         {% for talk in afternoon_talks %}
-            {% include 'core/talk_list_snippet.html' with talk=talk only %}
+        {% include 'core/talk_list_snippet.html' with talk=talk only %}
         {% empty %}
-            <p>Ainda não existem palestras pela tarde.</p>
+        <p>Ainda não existem palestras pela tarde.</p>
         {% endfor %}
 
-        <h2>Mini-cursos</h2>
-        {% for course in courses %}
-            {% include 'core/talk_list_snippet.html' with talk=course only %}
-        {% empty %}
-            <p>Ainda não existem cursos.</p>
-        {% endfor %}
     </div>
+</section>
 {% endblock content %}

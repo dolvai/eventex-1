@@ -33,6 +33,11 @@ class SpeakerDetailGet(TestCase):
             with self.subTest():
                 self.assertContains(self.response, expected)
 
+    def test_context(self):
+        """Speaker must be in content"""
+        speaker = self.response.context['speaker']
+        self.assertIsInstance(speaker, Speaker)
+
 
 class SpeakerDetailNotFound(TestCase):
     def test_not_found(self):
