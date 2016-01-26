@@ -1,5 +1,5 @@
 from django.contrib import admin
-from eventex.core.models import Speaker, Contact, Talk
+from eventex.core.models import Speaker, Contact, Talk, Course
 
 
 class ContactInline(admin.TabularInline):
@@ -25,7 +25,7 @@ class SpeakerModelAdmin(admin.ModelAdmin):
     photo_img.short_description = 'foto'
 
 
-class TalkModelAdmin(admin.ModelAdmin):
+class ActivityModelAdmin(admin.ModelAdmin):
     list_display = ['title', 'start', 'get_speakers']
 
     def get_speakers(self, obj):
@@ -35,4 +35,5 @@ class TalkModelAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Speaker, SpeakerModelAdmin)
-admin.site.register(Talk, TalkModelAdmin)
+admin.site.register(Talk, ActivityModelAdmin)
+admin.site.register(Course, ActivityModelAdmin)
