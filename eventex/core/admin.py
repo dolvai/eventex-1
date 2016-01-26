@@ -28,7 +28,10 @@ class SpeakerModelAdmin(admin.ModelAdmin):
 class TalkModelAdmin(admin.ModelAdmin):
     list_display = ['title', 'start', 'get_speakers']
 
-    Talk.get_speakers.short_description = 'Palestrante'
+    def get_speakers(self, obj):
+        return ', '.join([speaker.name for speaker in obj.speakers.all()])
+
+    get_speakers.short_description = 'palestrante(s)'
 
 
 admin.site.register(Speaker, SpeakerModelAdmin)

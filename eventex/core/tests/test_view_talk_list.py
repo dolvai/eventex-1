@@ -47,13 +47,6 @@ class TalkListGet(TestCase):
             with self.subTest():
                 self.assertIn(key, self.response.context)
 
-    def test_display_talk_speakers(self):
-        talk = Talk.objects.create(title='Título da Palestra', start='10:00',
-                                   description='Descrição da palestra.')
-        talk.speakers.add(self.speaker)
-
-        self.assertEqual('Henrique Bastos', talk.get_speakers())
-
 
 class TalkListGetEmpty(TestCase):
     def test_get_empty(self):
